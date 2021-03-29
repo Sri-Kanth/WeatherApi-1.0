@@ -1,4 +1,4 @@
 # WeatherApi-1.0
 
-Main Class: QuickStartApp.scala
+Main Class: QuickstartApp.scala
 
