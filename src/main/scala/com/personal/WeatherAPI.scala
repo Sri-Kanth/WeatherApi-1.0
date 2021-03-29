@@ -53,6 +53,10 @@ object WeatherCondition extends Enumeration {
   }
 }
 
+/**
+ * Weather API object to invoke the external ONEAPI call and parse the response to extract temp.
+ *
+ */
 object WeatherAPI extends App {
 
   lazy val logger = Logger("WeatherAPI")
@@ -90,6 +94,12 @@ object WeatherAPI extends App {
     }
   }
 
+  /**
+   * Fetch the current temperature given the latitude and longitude and respond back with derived feels like temp level.
+   * @param latitude
+   * @param longitude
+   * @param replyTo
+   */
   def getCurrentTempLevel(latitude:String, longitude:String, replyTo: ActorRef[WeatherResp])  {
 
     implicit val system = ActorSystem(Behaviors.empty, "SingleRequest")
