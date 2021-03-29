@@ -125,17 +125,6 @@ object WeatherAPI extends App {
             replyTo ! jsonString.getWeatherResp
           }
         }
-       /* case Success(res) if res.isJson => {
-          Unmarshal(res.entity).to[String].map { jsonString =>
-            println(jsonString)
-
-            val currentTemp = jsonString.getCurrentTemp
-
-            val currentTempLevel = WeatherCondition.transform(currentTemp)
-            println(s"weatherCond: $currentTemp $currentTempLevel")
-            replyTo ! JObject(List(JField("currentTemp", JString(currentTempLevel.toString))))
-          }
-        }*/
         case Success(nonJsonResp) => {
           Failure(new IllegalArgumentException("Non Json Response"))
           replyTo ! WeatherResp(None, true, Some("FAILURE_NON_JSON"))
